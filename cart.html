@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Your Cart - RickenMorti Store</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="styles.css"> <!-- Link ke file CSS -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .cart {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .cart h2 {
+            text-align: center;
+            color: #333;
+        }
+        .cart-item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cart-item h3 {
+            margin: 0;
+            color: #555;
+        }
+        .price {
+            font-weight: bold;
+            color: #333;
+        }
+        .total {
+            margin-top: 20px;
+            text-align: right;
+        }
+        .total h3 {
+            color: #333;
+        }
+        .checkout {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .checkout:hover {
+            background: #555;
+        }
+        #checkout-form {
+            margin-top: 20px;
+            display: none;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        #checkout-form label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        #checkout-form input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .footer-links a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .social-icons a {
+            color: #fff;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">RickenMorti STORE</div>
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+    <section class="cart">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <div class="total">
+            <h3>Total: $<span id="total-price">0.00</span></h3>
+            <button class=" checkout" id="checkout-button">Checkout</button>
+        </div>
+        <div id="checkout-form" style="display: none;">
+            <h3>Checkout</h3>
+            <form id="form-checkout">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+                <label for="address">Address:</label>
+                <input type="text" id="address" required>
+                <button type="submit">Submit Order</button>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-links">
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p>© 2024 RickenMorti Store. All rights reserved.</p>
+    </footer>
+    <script>
+        // Ambil keranjang dari localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartItemsContainer = document.getElementById('cart-items');
+        const totalPriceElement = document.getElementById('total-price');
+        const checkoutButton = document.getElementById('checkout-button');
+        const checkoutForm = document.getElementById('checkout-form');
+    
+        // Fungsi untuk menampilkan item di keranjang
+        function displayCartItems() {
+            cartItemsContainer.innerHTML = ''; // Kosongkan kontainer
+            let total = 0;
+    
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+    
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('cart-item');
+                itemElement.innerHTML = `
+                    <h3>${item.name}</h3>
+                    <div class="price">$${item.price} x ${item.quantity} = $${itemTotal.toFixed(2)}</div>
+                `;
+                cartItemsContainer.appendChild(itemElement);
+            });
+    
+            totalPriceElement.textContent = total.toFixed(2); // Update total harga
+        }
+    
+        // Menangani klik tombol checkout
+        checkoutButton.addEventListener('click', function() {
+            document.getElementById('checkout-form').style.display = 'block'; // Tampilkan formulir checkout
+        });
+    
+        // Menangani pengiriman formulir checkout
+        document.getElementById('form-checkout').addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah pengiriman formulir default
+    
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+    
+            // Proses checkout (misalnya, simpan ke database atau kirim ke server)
+            alert(`Order submitted!\nName: ${name}\nAddress: ${address}\nTotal: $${totalPriceElement.textContent}`);
+    
+            // Kosongkan keranjang setelah checkout
+            localStorage.removeItem('cart');
+            cart = [];
+            displayCartItems(); // Perbarui tampilan keranjang
+            document.getElementById('checkout-form').style.display = 'none'; // Sembunyikan formulir checkout
+        });
+    
+        // Panggil fungsi untuk menampilkan item saat halaman dimuat
+        displayCartItems();
+    </script>
+</body>
+</html>

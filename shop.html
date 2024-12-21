@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Shop RickenMorti Store</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="styles.css"> <!-- Link ke file CSS -->
+</head>
+<body>
+    <header>
+        <div class="logo">RickenMorti STORE</div>
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+    <section class="shop">
+        <h2>Shop Our Products</h2>
+        <div class="product-list">
+            <div class="product-item" data-id="1" data-name="Jacket" data-price="29.99">
+                <img alt="Product 1" height="200" src="https://i.pinimg.com/736x/df/c4/35/dfc435e01773d9eb73d141c151eafc64.jpg" width="200"/>
+                <h3>Jacket</h3>
+                <div class="price">$29.99</div>
+                <a href="#" class="add-to-cart">Add to Cart</a>
+            </div>
+            <div class="product-item" data-id="2" data-name="Carrier" data-price="39.99">
+                <img alt="Product 2" height="200" src="https://i.pinimg.com/736x/76/8e/35/768e35177982039c728c5232cce975ab.jpg" width="200"/>
+                <h3>Carrier</h3>
+                <div class="price">$39.99</div>
+                <a href="#" class="add-to-cart">Add to Cart</a>
+            </div>
+            <div class="product-item" data-id="3" data-name="Tenda" data-price="49.99">
+                <img alt="Product 3" height="200" src="https://i.pinimg.com/736x/88/b2/09/88b209f8d537f158bf8c087fa42a04dd.jpg" width="200"/>
+                <h3>Tenda</h3>
+                <div class="price">$49.99</div>
+                <a href="#" class="add-to-cart">Add to Cart</a>
+            </div>
+            <div class="product-item" data-id="4" data-name="Celana Gunung" data-price="59.99">
+                <img alt="Product 4" height="200" src="https://i.pinimg.com/736x/31/a0/17/31a0179332bba2c686ca5d0d2b81b0c5.jpg" width="200"/>
+                <h3>Celana Gunung</h3>
+                <div class="price">$59.99</div>
+                <a href="#" class="add-to-cart">Add to Cart</a>
+            </div>
+            <div class="product-item" data-id="5" data-name="GorpCore" data-price="69.99">
+                <img alt="Product 5" height="200" src="https://i.pinimg.com/736x/b4/40/34/b440344c269aef96230196c695d37d4b.jpg" width="200"/>
+                <h3>GorpCore</h3>
+                <div class="price">$69.99</div>
+                <a href="#" class="add-to-cart">Add to Cart</a>
+            </div>
+            <div class="product-item" data-id="6" data-name="Sleeping Bag" data-price="79.99">
+                <img alt="Product 6" height="200" src="https://i.pinimg.com/736x/46/3d/2f/463d2fa204f2ec97b4ba9d4cf6f00136.jpg" width="200"/>
+                <h3>Sleeping Bag</h3>
+                <div class="price">$79.99</div>
+                <a href="#" class="add-to-cart">Add to Cart</a>
+            </div>
+            <div class="product-item" data-id="7" data-name="Mountain Shoe" data-price="89.99">
+                <img alt="Product 7" height="200" src="https://i.pinimg.com/736x/2f/4d/59/2f4d59f3e106b8de81f1e33d97bb2d63.jpg" width="200"/>
+                <h3>Mountain Shoe</h3>
+                <div class="price">$89.99</div>
+                <a href="#" class="add-to-cart">Add to Cart</a>
+            </div>
+            <div class="product-item" data-id="8" data-name="GorpCore" data-price="19.99">
+                <img alt="Product 8" height="200" src="https://i.pinimg.com/736x/b4/40/34/b440344c269aef96230196c695d37d4b.jpg" width="200"/>
+                <h3>GorpCore</h3>
+                <div class="price">$19.99</div>
+                <a href="#" class="add-to-cart">Add to Cart</a>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-links">
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p>© 2024 RICKENMORTI Store. All rights reserved.</p>
+    </footer>
+    <script>
+        // Fungsi untuk menambahkan produk ke keranjang
+        function addToCart(productId, productName, productPrice) {
+            // Ambil keranjang dari localStorage atau buat array baru jika belum ada
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+            // Cek apakah produk sudah ada di keranjang
+            const existingProduct = cart.find(item => item.id === productId);
+            if (existingProduct) {
+                existingProduct.quantity += 1; // Jika ada, tambahkan kuantitas
+            } else {
+                // Jika tidak ada, tambahkan produk baru ke keranjang
+                cart.push({ id: productId, name: productName, price: productPrice, quantity: 1 });
+            }
+    
+            // Simpan kembali keranjang ke localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${productName} has been added to your cart!`);
+        }
+    
+        // Event listener untuk tombol "Add to Cart"
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault(); // Mencegah link default
+                const productItem = this.parentElement; // Ambil elemen produk
+                const productId = productItem.getAttribute('data-id');
+                const productName = productItem.getAttribute('data-name');
+                const productPrice = parseFloat(productItem.getAttribute('data-price'));
+    
+                // Panggil fungsi untuk menambahkan produk ke keranjang
+                addToCart(productId, productName, productPrice);
+            });
+        });
+    </script>
+</body>
+</html>

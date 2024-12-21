@@ -1,0 +1,206 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Warna latar belakang yang lebih lembut */
+}
+
+header {
+    background-color: #333; /* Warna gelap untuk header */
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Bayangan untuk efek kedalaman */
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s; /* Transisi halus saat hover */
+}
+
+.nav a:hover {
+    color: #f00; /* Warna merah saat hover */
+}
+
+.main-banner {
+    position: relative;
+}
+
+.main-banner img {
+    width: 100%;
+    height: auto;
+    border-bottom: 5px solid #f00; /* Garis bawah merah untuk pemisah */
+}
+
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.6); /* Latar belakang transparan */
+    padding: 20px;
+    border-radius: 10px; /* Sudut melengkung */
+}
+
+.banner-text h1 {
+    font-size: 36px;
+    margin: 0;
+}
+
+.banner-text a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #f00; /* Warna tombol */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s; /* Transisi halus saat hover */
+}
+
+.banner-text a:hover {
+    background-color: #c00; /* Warna tombol saat hover */
+}
+
+.new-arrivals, .our-favorites {
+    padding: 40px 20px;
+    background-color: white; /* Latar belakang putih untuk bagian produk */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Bayangan untuk efek kedalaman */
+    border-radius: 10px; /* Sudut melengkung */
+    margin: 20px; /* Margin untuk pemisahan */
+}
+
+h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333; /* Warna teks */
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.product-item {
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px; /* Sudut melengkung */
+    width: calc(25% - 20px);
+    box-sizing: border-box;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s; /* Transisi halus untuk efek hover */
+    margin-bottom: 20px; /* Margin bawah untuk pemisahan */
+}
+
+.product-item:hover {
+    transform: translateY(-5px); /* Efek angkat saat hover */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Bayangan lebih dalam saat hover */
+}
+
+.product-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; /* Sudut melengkung untuk gambar */
+    margin-bottom: 10px;
+}
+
+.product-item h3 {
+    margin: 10px 0;
+    font-size: 20px;
+    color: #333; /* Warna teks */
+}
+
+.product-item .price {
+    color: #f00; /* Warna harga */
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.product-item .old-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 14px;
+}
+
+.product-item .rating {
+    margin: 10px 0;
+}
+
+.product-item .rating i {
+    color: #f0c040; /* Warna bintang */
+}
+
+.footer-links, .social-icons {
+    text-align: center;
+    padding: 20px;
+    background-color: #333; /* Warna latar belakang footer */
+    color: white;
+}
+
+.footer-links a, .social-icons a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s; /* Transisi halus saat hover */
+}
+
+.footer-links a:hover, .social-icons a:hover {
+    color: #f00; /* Warna merah saat hover */
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #e5e5e5; /* Garis pemisah */
+}
+
+.cart-item h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.cart-item .price {
+    color: #f00; /* Warna harga */
+    font-size: 18px;
+}
+
+.remove, .checkout {
+    background-color: #f00; /* Warna tombol */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Transisi halus saat hover */
+}
+
+.remove:hover, .checkout:hover {
+    background-color: #c00; /* Warna tombol saat hover */
+}
+
+.total {
+    text-align: right;
+    margin-top: 20px;
+    font-size: 20px;
+    color: #333; /* Warna teks total */
+}
